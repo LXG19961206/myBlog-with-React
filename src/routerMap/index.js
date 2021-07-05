@@ -1,7 +1,8 @@
 import { Index } from "../view/Index"
 import Api from "../view/api"
 import Doc from "../view/doc"
-
+import Golang from '../view/golang'
+import Jsbase from '../view/jsbase'
 
 export const routerMap = [
   {
@@ -14,12 +15,24 @@ export const routerMap = [
     name: 'api',
     path: '/api',
     component: Api,
-    desc: 'JavaScriptApi手册'
+    desc: 'JavaScript手册'
   },
   {
     name: 'doc',
     path: '/doc',
     component: Doc,
-    desc: '技术相关文档'
+    desc: '技术文档和杂文'
+  },
+  {
+    name: 'jsbase',
+    path: '/jsbase',
+    component: Jsbase,
+    desc: 'JavaScript入门'
+  },
+  {
+    name: 'golang',
+    path: '/golang',
+    component: Golang,
+    desc: 'GO语言手册'
   }
 ]

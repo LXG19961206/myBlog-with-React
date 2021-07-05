@@ -1,13 +1,46 @@
 // index.less
+.argsTable {
+  table {
+    th,td {
+      font-size: 0.75rem;
+    }
+    td:not(:last-child) {
+      font-style: italic;
+    }
+  }
+}
+
+.descTextBlock {
+  font-size: .8rem;
+  color: #888;
+  position: relative;
+  left: 20px;
+  line-height: 1.5;
+  margin: 20px 20px 20px 0;
+}
+.descTextBlock::after {
+  content: '';
+  display: inline-block;
+  height: 110%;
+  width: 1px;
+  background: #999;
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 .content {
-  display: none;
+  border-radius: 16px;
+  padding: 10px;
   /*对 markdown 样式的补充*/
+  li {
+    font-size: 0.9rem;
+  }
   code,
   pre {
-    color: #ccc;
-    background: none;
+    border-radius: 16px;
     font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
-    font-size: 1em;
     text-align: left;
     white-space: pre;
     word-spacing: normal;
@@ -18,11 +51,18 @@
     hyphens: none;
     overflow-y: hidden;
   }
-
+  pre code {
+    background: #2d2d2d;
+    color: #ccc;
+  }
+  code {
+    color: lightcoral;
+  }
   pre {
+    padding: 20px;
+    border: 1px solid #aaa ;
     background: #2d2d2d;
     position: relative;
-    padding-left: 3.8em;
   }
 
   code {

@@ -3,7 +3,7 @@ export const apis =
     {
       name: 'Array',
       items: [
-        'some', 'every', 'reduce', 'filter'
+        'forEach','map','some', 'every', 'reduce', 'filter','find','findIndex','sort','flat'
       ]
     },
     {
@@ -15,7 +15,7 @@ export const apis =
     {
       name: 'Object',
       items: [
-        'keys', 'values', 'freeze', 'toString'
+        'keys', 'values', 'freeze', 'toString(object)'
       ]
     },
     {
@@ -27,7 +27,7 @@ export const apis =
     {
       name: 'Number',
       items: [
-        'parseInt', 'parseFloat', 'toString', 'toFix'
+        'parseInt', 'parseFloat', 'toString(number)', 'toFix'
       ]
     }
   ]

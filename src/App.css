@@ -5,6 +5,20 @@
 .app-header {
   background: #fff;
 }
+.loadingContainer {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  /* 写这么高我也很无奈, antd 有部分的 zindex 很高 */
+  z-index: 9999; 
+  background: rgba(0,0,0,0.2);
+}
+.loadingContainer .loading {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
 
 .App-logo {
   height: 40vmin;
@@ -27,7 +41,9 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
+chor-ink::before {
+  background: #e8e8e8;
+}
 .App-link {
   color: #61dafb;
 }
