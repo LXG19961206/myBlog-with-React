@@ -1,23 +1,38 @@
 import './App.css';
-import { Route,Switch,withRouter } from 'react-router-dom'
+import { 
+  Route,
+  Switch,
+  withRouter 
+} from 'react-router-dom'
 import React from 'react';
 import { routerMap } from './routerMap/index'
-import { Layout, Menu, Row, Col, Alert, Spin } from 'antd';
+import { 
+  Layout, 
+  Menu, 
+  Row, 
+  Col, 
+  Alert, 
+  Spin,
+  Input 
+} from 'antd';
 import logo from './images/logo.jpeg'
-import { useState  } from 'react'
+import { useState, useEffect  } from 'react'
 import { connect } from 'react-redux'
-import { setLoading, setLoadingAsync } from '../src/store/actionsCreater'
+import { setLoading, setLoadingAsync, routerPush } from '../src/store/actionsCreater'
 const { Header, Content } = Layout;
-
+const { Search } = Input
 
 function App(props) {
-  const { setLoading, setLoadingAsync } = props
+  const { setLoading, setLoadingAsync, routerPush } = props
   const [ showHeaderFlag ] = useState(true)
   const [ showAlert, setAlert ] = useState({ display: 'none' })
   const toSomeWhere = (path) => {
     setTimeout(() => props.history.push(path))
     setLoading(true) && setLoadingAsync(false, 2000)
   }
+  useEffect(() => {
+    routerPush(props.history.push)
+  })
   return (  
       <Layout className="layout">
         {
@@ -44,7 +59,7 @@ function App(props) {
                   style = {{ height: '64px', width: '64px',borderRadius: '50%' }}
                   src = { logo }/>
               </Col>
-              <Col span = { 22 }>
+              <Col span = { 18 }>
                 <Menu 
                   mode="horizontal" 
                   defaultSelectedKeys={[props.history.location.pathname]}
@@ -61,6 +76,12 @@ function App(props) {
                     })   
                   }
                 </Menu>
+              </Col>
+              <Col span = { 4 }>
+                <Search 
+                  className = 'searchInput'
+                  placeholder="输入感兴趣的文章"
+                />
               </Col>
             </Row>
           </Header>
@@ -88,6 +109,7 @@ function App(props) {
 export default connect(
   state => ({...state}),{
     setLoading,
-    setLoadingAsync
+    setLoadingAsync,
+    routerPush
   }
 )(withRouter(App))

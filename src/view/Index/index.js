@@ -1,13 +1,20 @@
-import { Button, Checkbox, Radio } from 'antd'
 import React from 'react'
-const RadioGroup = Radio.Group;
+import { Code } from '../../compontent/code'
+import { Row,Col } from 'antd'
+import { docs } from '../../mock/docs'
 
-export const Index = () =>  {
+export function Index(props) {
   return (
     <div>
-      <p className="buttons">
-        <Button type="primary">切换</Button>
-      </p>
+      <Row>
+        <Col span = { 18 }>
+          <Code 
+            autoPlay = { true }
+            code = { docs.Promise } 
+            interval = { 100 }
+          />
+        </Col>
+      </Row>
     </div>
-  );
+  )
 }

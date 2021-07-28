@@ -21,7 +21,7 @@ export const routerMap = [
     name: 'doc',
     path: '/doc',
     component: Doc,
-    desc: '技术文档和杂文'
+    desc: 'DOCS'
   },
   {
     name: 'jsbase',

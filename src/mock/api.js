@@ -53,7 +53,7 @@ export const apiDocs = {
     },
     {
       name: '代码实现',
-      elementId: 'mapCode',
+      elementId: 'forEachCode',
       type: 'code',
       code: "```javascript\n"+
       "Array.prototype._forEach = function (callback) {\n"+

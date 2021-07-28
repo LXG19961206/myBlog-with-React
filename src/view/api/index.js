@@ -1,5 +1,13 @@
-import React, { useEffect,useState } from 'react'
-import { Card, Layout, Row, Col, Menu ,Affix , Anchor } from 'antd'
+import React, { useLayoutEffect,useState } from 'react'
+import { 
+  Card, 
+  Layout, 
+  Row, 
+  Col, 
+  Menu,
+  Affix, 
+  Anchor 
+} from 'antd'
 import { apis } from '../../staticMap/apis'
 import ContentDetail from '../../compontent/detailContent'
 import { apiDocs } from '../../mock/api'
@@ -10,39 +18,20 @@ import { setLoading, setLoadingAsync } from '../../store/actionsCreater'
 const { SubMenu } = Menu;
 const { Link } = Anchor
 const $ = content => document.querySelector(content)
-const $$ = (content) => Array.from(document.querySelectorAll(content))
 
 
 const Api = props => {
+  console.log(props, 3232)
   const { setLoading, setLoadingAsync } = props
   const [ contentMinHeight, setHeight ] = useState(0)
   const [ showAnchor, setAnchorOpa ] = useState(0)
   const [ source,setSource ] = useState(apiDocs['forEach'])
   const [ target,setTarget ] = useState('forEach')
-  const [ heightList, setHeightList ] = useState([])
-  const setCurrentSumHeightFn = () => {
-    const headerHeight = $('.app-header').clientHeight
-    setTimeout(() => {
-      setHeightList(
-        $$('.contentDetail').map((item, i ,arr) => [ 
-          i === 0 ? item.clientHeight : arr.slice(0,i + 1).map(el => el.clientHeight).reduce((prev, current) => prev + current), 
-          source[i].name
-        ])
-      )
-      $('body').onscroll = function () {
-        const scrollTop = document.documentElement.scrollTop || $('body').scrollTop
-        console.log(heightList.find(item => item[0] + headerHeight > scrollTop))
-      }
-      console.log(heightList)
-    })
-  }
-  useEffect(() => {
+  
+  useLayoutEffect(() => {
     setHeight($('body').clientHeight - $('.app-header').clientHeight - 20)
   }, [])
-  useEffect(() => {
-    setCurrentSumHeightFn()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[target,source])
+ 
   return (
     <React.Fragment>
       <div style = {{ height: '20px' }}></div>
@@ -136,7 +125,11 @@ const Api = props => {
                 {
                   source.map(item => {
                     return (
-                      <Link href={`/api/${'#' + item.elementId}`} title = { item.name } key = { item.elementId }/>
+                      <Link href={ 
+                        (window.location.hash ? '' : window.location.hash) + '#' +item.elementId
+                      } 
+                            title = { item.name } 
+                            key = { item.elementId }/>
                     )
                   })
                 }
